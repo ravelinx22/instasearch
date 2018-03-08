@@ -27,7 +27,7 @@ This is a boilerplate for rapid application development using MongoDB, Express, 
 - Create an .env file with your MongoDB url and other environmental variables.
 
 ```
-  DB_HOST=mongodb://localhost:27017/prueba_posi
+  DB_HOST=mongodb://localhost:27017/test
 ```
 
 ## FAQ
@@ -36,6 +36,32 @@ This is a boilerplate for rapid application development using MongoDB, Express, 
 
 Go to bin/www and change the port variable
 
-``javascript
+```javascript
   var port = process.env.PORT || YOUR_PREFERENCE_PORT
+```
+
+### How to deploy to Heroku
+
+1. Add to the Procfile your custom starting script
+
+```javascript
+  web: node bin/www
+```
+
+2. Add yout Heroku remote
+
+```
+  heroku git:remote -a heroku_app_name
+```
+
+3. Push to Heroku
+
+```
+  git push heroku master
+```
+
+4. Add environmental variable to Heroku
+
+```
+  heroku config:set DB_HOST=mongodb://localhost:27017/prueba_posi
 ```
