@@ -8,10 +8,18 @@
   npm run webpack
 ```
 
-## Start Project
+### Start Project
 
 ```javascript
   npm start
 ```
 
-# Prerequisites
+### Prerequisites
+
+- Create an .env file with your MongoDB url.
+
+```
+  DB_HOST=mongodb://localhost:27017/prueba_posi
+```
+
+
