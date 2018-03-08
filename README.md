@@ -8,6 +8,7 @@ This is a boilerplate for rapid application development using MongoDB, Express, 
 - Fontawesome
 - Mongoose
 - React router V4
+- ESLint
 
 ### Build Project
 
@@ -39,6 +40,10 @@ Go to bin/www and change the port variable
 ```javascript
   var port = process.env.PORT || YOUR_PREFERENCE_PORT
 ```
+
+### How can I change ESLint configuration
+
+Add your custom configuration in the file .eslintrc.js
 
 ### How to deploy to Heroku?
 
