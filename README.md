@@ -1,14 +1,14 @@
 # MERN Boilerplate
 
 
-# Build Project
+### Build Project
 
 ```javascript
   npm install
   npm run webpack
 ```
 
-# Start Project
+## Start Project
 
 ```javascript
   npm start
