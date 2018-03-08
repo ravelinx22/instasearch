@@ -48,7 +48,7 @@ Go to bin/www and change the port variable
   web: node bin/www
 ```
 
-2. Add yout Heroku remote
+2. Add your Heroku remote
 
 ```
   heroku git:remote -a heroku_app_name
