@@ -40,7 +40,7 @@ Go to bin/www and change the port variable
   var port = process.env.PORT || YOUR_PREFERENCE_PORT
 ```
 
-### How to deploy to Heroku
+### How to deploy to Heroku?
 
 1. Add to the Procfile your custom starting script
 
