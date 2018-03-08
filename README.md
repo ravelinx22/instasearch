@@ -1,5 +1,6 @@
 # MERN Boilerplate
 
+## Build & Run
 
 ### Build Project
 
@@ -14,7 +15,7 @@
   npm start
 ```
 
-### Prerequisites
+## Prerequisites
 
 - Create an .env file with your MongoDB url.
 
