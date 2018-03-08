@@ -63,5 +63,5 @@ Go to bin/www and change the port variable
 4. Add environmental variable to Heroku
 
 ```
-  heroku config:set DB_HOST=mongodb://localhost:27017/prueba_posi
+  heroku config:set DB_HOST=mongodb://localhost:27017/test
 ```
