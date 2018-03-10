@@ -3,6 +3,7 @@ import { TagComponent } from "../components/tag_component";
 import { Container, Row, Col, Button } from "reactstrap";
 import TagCard from "../components/tag_card";
 import { TagCardRow } from "../components/tag_card_row";
+import Alert from 'react-s-alert';
 
 export function testAction() {
 	console.log("Hello world");
@@ -10,8 +11,7 @@ export function testAction() {
 
 export function getResults(tagName) {
 	console.log(tagName);
-
-fetch("/api/fights", {
+	fetch("/api/fights", {
 		method: "POST",
 		body: JSON.stringify({
 			"primaryTag": tagName
@@ -29,11 +29,12 @@ fetch("/api/fights", {
 		this.setState({tagInfo: card});
 	})
 	.catch((error) => {
-		console.log("Error");
+		this.showError("Opps, there was an error");
 	});
 }
 
 export function loadHistory() {
+
 	fetch("/api/fights")
 	.then(results => {
 		return results.json();
@@ -46,6 +47,17 @@ export function loadHistory() {
 
 			return <TagCard key={tag._id} rows={rows} name={tag.name}/>
 		});
+		
 		this.setState({history: cards});
+	})
+	.catch((error) => {
+		this.showError("Opps, there was an error");	
+	});
+}
+
+export function showError(message) {
+    Alert.error(message, {
+        position: 'top-right',
+        timeout: 'none'
 	});
 }

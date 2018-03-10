@@ -4,7 +4,9 @@ import { Container, Row, Col, Button } from "reactstrap";
 import { Link } from "react-router-dom"
 import TagCard from "../components/tag_card";
 // Actions
-import { getResults, loadHistory } from "../actions/actions"
+import { getResults, loadHistory, showError } from "../actions/actions"
+import Alert from 'react-s-alert';
+import 'react-s-alert/dist/s-alert-default.css';
 
 export default class HomeContainer extends React.Component {
 	constructor(props) {
@@ -16,10 +18,12 @@ export default class HomeContainer extends React.Component {
 		}
 		this.getResults = getResults.bind(this);
 		this.loadHistory = loadHistory.bind(this);
+		this.showError = showError.bind(this);
 	}
 
 	componentDidMount() {
 		this.loadHistory();
+		this.showError("posi");
 	}
 
 	updateTag(evt) {
@@ -45,7 +49,8 @@ export default class HomeContainer extends React.Component {
 						{this.state.history}
 					</Row>
 				</Container>
-			</Container>
+				<Alert stack={{limit: 3}} />
+	</Container>
 		);
 	}
 }
