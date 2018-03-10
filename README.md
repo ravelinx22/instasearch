@@ -10,7 +10,7 @@ This is a web app that given a Instagram hashtag finds the 5 other hashtags that
 - React router V4
 - ESLint
 
-See live demo at: [Link](https://instasearch-web.herokuapp.com/)
+See live [demo](https://instasearch-web.herokuapp.com/)
 
 ### Build Project
 
