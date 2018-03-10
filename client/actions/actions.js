@@ -10,6 +10,7 @@ export function testAction() {
 }
 
 export function getResults(tagName) {
+	this.setState({loaded: true});
 	console.log(tagName);
 	fetch("/api/fights", {
 		method: "POST",
@@ -32,7 +33,7 @@ export function getResults(tagName) {
 			return <TagCardRow tag={tag.name} ranking={i++} onClick={() => this.getResults(tag.name.substring(1))}/>;	
 		});
 	    var card = <TagCard rows={tags} name={tagName}/>;
-		this.setState({tagInfo: card});
+		this.setState({tagInfo: card, loaded: false});
 	})
 	.catch((error) => {
 		this.showError("Opps, there was an error");

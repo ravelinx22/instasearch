@@ -7,6 +7,7 @@ import TagCard from "../components/tag_card";
 import { getResults, loadHistory, showError } from "../actions/actions"
 import Alert from 'react-s-alert';
 import 'react-s-alert/dist/s-alert-default.css';
+import ActivityIndicator from 'react-activity-indicator'
 
 export default class HomeContainer extends React.Component {
 	constructor(props) {
@@ -14,7 +15,8 @@ export default class HomeContainer extends React.Component {
 		this.state = {
 			tagName: "",
 			tagInfo: null,
-			history: []
+			history: [],
+			loaded: false
 		}
 		this.getResults = getResults.bind(this);
 		this.loadHistory = loadHistory.bind(this);
@@ -32,6 +34,24 @@ export default class HomeContainer extends React.Component {
 	}
 
 	render() {
+		if(this.state.loaded) {
+			return(
+				<Container>
+				<div className="homeTitle">InstaSearch</div>
+				<Row className="justify-content-center">
+				<ActivityIndicator activeColor="#0070bf" borderWidth={2} borderRadius="50%" diameter={25} />
+				</Row>
+				<Container>
+					<div className="subtitle">History</div>
+					<Row>
+						{this.state.history}
+					</Row>
+				</Container>
+				<Alert stack={{limit: 3}} />
+			</Container>
+			
+			);
+		} else {
 		return (
 			<Container>
 				<div className="homeTitle">InstaSearch</div>
@@ -49,7 +69,7 @@ export default class HomeContainer extends React.Component {
 					</Row>
 				</Container>
 				<Alert stack={{limit: 3}} />
-	</Container>
-		);
+			</Container>
+		);}
 	}
 }
