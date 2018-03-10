@@ -23,7 +23,6 @@ export default class HomeContainer extends React.Component {
 
 	componentDidMount() {
 		this.loadHistory();
-		this.showError("posi");
 	}
 
 	updateTag(evt) {

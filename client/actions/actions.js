@@ -18,7 +18,13 @@ export function getResults(tagName) {
 		 }),
 		headers: new Headers({'content-type': 'application/json'}),
 	})
-	.then((response) => response.json())
+	.then((response) => {
+		if(response.status !== 404 && response.status !== 500) {
+			return response.json();
+		} else {
+			throw new Error();
+		}
+	})
 	.then((responseJSON) => {
 		this.loadHistory();
 		var i = 1;
@@ -37,7 +43,11 @@ export function loadHistory() {
 
 	fetch("/api/fights")
 	.then(results => {
-		return results.json();
+		if(results.status !== 404 && results.status !== 500) {
+			return results.json();
+		} else {
+			throw new Error();
+		}
 	}).then(data => {
 		var cards = data.map((tag) => {
 			var i = 1;
