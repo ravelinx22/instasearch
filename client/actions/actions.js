@@ -33,9 +33,10 @@ export function getResults(tagName) {
 			return <TagCardRow tag={tag.name} ranking={i++} onClick={() => this.getResults(tag.name.substring(1))}/>;	
 		});
 	    var card = <TagCard rows={tags} name={tagName}/>;
-		this.setState({tagInfo: card, loaded: false});
+		this.setState({tagInfo: card, loaded: false, tagName: ""});
 	})
 	.catch((error) => {
+		this.setState({loaded: false, tagName: ""});
 		this.showError("Opps, there was an error");
 	});
 }
@@ -62,6 +63,7 @@ export function loadHistory() {
 		this.setState({history: cards});
 	})
 	.catch((error) => {
+		this.setState({loaded: false});
 		this.showError("Opps, there was an error");	
 	});
 }
