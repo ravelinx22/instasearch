@@ -57,7 +57,7 @@ export default class HomeContainer extends React.Component {
 				<div className="homeTitle">InstaSearch</div>
 				<Row className="justify-content-center">
 					<input value={this.state.tagName} type="text" placeholder="Search Hashtag" onChange={(evt) => this.updateTag(evt)}/>
-					<button className="search_btn" onClick={() => this.getResults(this.state.tagName)}>Buscar</button>
+					<button className="search_btn" onClick={() => this.getResults(this.state.tagName)}>Search</button>
 				</Row>
 				<Container>
 					<Row className="justify-content-center">
