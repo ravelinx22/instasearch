@@ -1,14 +1,16 @@
-# MERN Boilerplate
+# InstaSearch
 
 ## Build & Run
 
-This is a boilerplate for rapid application development using MongoDB, Express, React and NodeJS. It also uses the following dependencies to make your application better:
+This is a web app that given a Instagram hashtag finds the 5 other hashtags that appear more often with the given hashtag in a photo, it uses: 
 
 - Bootstrap and Reactstrap
 - Fontawesome
 - Mongoose
 - React router V4
 - ESLint
+
+See live demo at: [Link](https://instasearch-web.herokuapp.com/)
 
 ### Build Project
 
@@ -39,34 +41,4 @@ Go to bin/www and change the port variable
 
 ```javascript
   var port = process.env.PORT || YOUR_PREFERENCE_PORT
-```
-
-### How can I change ESLint configuration
-
-Add your custom configuration in the file .eslintrc.js
-
-### How to deploy to Heroku?
-
-1. Add to the Procfile your custom starting script
-
-```javascript
-  web: node bin/www
-```
-
-2. Add your Heroku remote
-
-```
-  heroku git:remote -a heroku_app_name
-```
-
-3. Push to Heroku
-
-```
-  git push heroku master
-```
-
-4. Add environmental variable to Heroku
-
-```
-  heroku config:set DB_HOST=mongodb://localhost:27017/test
 ```
