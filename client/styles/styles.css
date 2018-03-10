@@ -1,3 +1,67 @@
-div {
-	font-size: 20px;
+@import url('https://fonts.googleapis.com/css?family=Oleo+Script:700');
+
+.homeTitle {
+	font-family: 'Oleo Script', cursive;
+	font-size: 100px;
+	text-align: center;
+	margin: 60px 0;
+}
+
+.search_btn {
+	background-color: #3897f0;
+	border-color: #3897f0;
+	border-radius: 3px;
+	border-width: 1px;
+	color: white;
+	font-size: 14px;
+	font-weight: 600;
+	margin-left: 10px;
+	height: 40px;
+	width: 70px;
+}
+
+input {
+	background-color: #fafafa;
+	border: solid 1px #dbdbdb;
+	border-radius: 3px;
+	color: #999;
+	font-size: 14px;
+	font-weight: 300;
+	text-align: center;
+	width: 250px;
+}
+
+.card_container {
+	border-radius: 6px;
+	box-shadow: 0 6px 16px rgba(0,0,0,0.15);
+	margin: 35px 0;
+}
+
+.card_content {
+	padding: 10px;
+}
+
+.card_title {
+	font-family: 'Oleo Script', cursive;
+	font-size: 24px;
+	font-weight: 400;
+	text-align: center;
+}
+
+.card_row_title {
+	font-family: 'Oleo Script', cursive;
+	font-size: 23px;
+	height: 40px;
+	line-height: 40px;
+}
+
+.card_row {
+	margin-bottom: 10px;
+}
+
+.subtitle {
+	font-family: 'Oleo Script', cursive;
+	font-size: 40px;
+	text-align: center;
+	margin-top: 50px;
 }

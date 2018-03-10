@@ -1,25 +1,51 @@
 import React from "react";
 import "../styles/styles.css";
 import { Container, Row, Col, Button } from "reactstrap";
-
+import { Link } from "react-router-dom"
+import TagCard from "../components/tag_card";
 // Actions
-import { getResults } from "../actions/actions"
+import { getResults, loadHistory } from "../actions/actions"
 
 export default class HomeContainer extends React.Component {
 	constructor(props) {
 		super(props);
+		this.state = {
+			tagName: "",
+			tagInfo: null,
+			history: []
+		}
 		this.getResults = getResults.bind(this);
+		this.loadHistory = loadHistory.bind(this);
 	}
 
 	componentDidMount() {
-		this.getResults();
+		this.loadHistory();
+	}
+
+	updateTag(evt) {
+		this.setState({
+			tagName: evt.target.value
+		});
 	}
 
 	render() {
 		return (
-			<div>
-				Hello World
-			</div>
+			<Container>
+				<div className="homeTitle">InstaSearch</div>
+				<Row className="justify-content-center">
+					<input type="text" placeholder="Search Hashtag" onChange={(evt) => this.updateTag(evt)}/>
+					<button className="search_btn" onClick={() => this.getResults(this.state.tagName)}>Buscar</button>
+				</Row>
+				<Container>
+					<Row className="justify-content-center">
+						{this.state.tagInfo}
+					</Row>
+					<div className="subtitle">History</div>
+					<Row>
+						{this.state.history}
+					</Row>
+				</Container>
+			</Container>
 		);
 	}
 }

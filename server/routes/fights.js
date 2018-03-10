@@ -2,11 +2,12 @@ var router = require("express").Router();
 const basePath = "https://www.instagram.com/explore/tags/";
 const endPath = "/?__a=1";
 var request = require("request");
+var Fight = require("../models/fight");
+var mongoose = require("mongoose");
 
 router.post("/", function(req, res) {
-	console.log(req.body);
 	var primaryTag = req.body.primaryTag;
-	console.log(primaryTag);
+	console.log(primaryTag + " posi");
 	request({
 		url: basePath + primaryTag + endPath,
 		method: "GET",
@@ -16,21 +17,32 @@ router.post("/", function(req, res) {
 		edges = response.graphql.hashtag.edge_hashtag_to_top_posts.edges;
 		
 		var tags = edges.map((edge) => {
-			return edge.node.edge_media_to_caption.edges[0].node.text.match(/#\w+/g);
+			if(edge.node.edge_media_to_caption.edges[0]) {
+				return edge.node.edge_media_to_caption.edges[0].node.text.match(/#\w+/g);
+			}
 		});
 
 		// Add tags
 		var all = {}; 
+
 		for(var i = 0; i < tags.length;i++) {
-			for(var j = 0; j < tags[i].length; j++) {
-			  all[tags[i][j]] = 0;
+			if(tags[i]) {
+				for(var j = 0; j < tags[i].length; j++) {
+					if(tags[i][j] !== ("#" + primaryTag)) {
+						all[tags[i][j]] = 0;
+					}
+				}
 			}
 		}
 
 		// Add count
 		for(var i = 0; i < tags.length;i++) {
-			for(var j = 0; j < tags[i].length; j++) {
-			  all[tags[i][j]] += 1;
+			if(tags[i]) {
+				for(var j = 0; j < tags[i].length; j++) {
+					if(tags[i][j] !== ("#" + primaryTag)) {
+						all[tags[i][j]] += 1;
+					}
+				}
 			}
 		}
 
@@ -43,9 +55,36 @@ router.post("/", function(req, res) {
 	    var endResult = result.map((name) => {
 			return {name: name, count: all[name]};
 		});
-		res.json(endResult);
+
+		if(endResult) {
+			if(endResult.length >= 5) {
+				endResult = endResult.slice(0,5);
+			}
+
+			var fight = new Fight({
+				_id: new mongoose.Types.ObjectId(),
+				name: primaryTag,
+				tags: endResult
+			});		
+
+			fight.save(function(err) {
+				if(err) throw err;
+			});
+
+			res.json(endResult);
+		}
 	});
 });
+
+router.get('/', function(req, res) {
+	Fight.find({})
+		.sort('-createdAt')
+		.limit(5)
+		.exec(function(err, fights) {
+			res.json(fights);	
+		})
+});
+
 
 module.exports = router;
 
