@@ -1,5 +1,9 @@
 # InstaSearch
 
+## Creative Component
+
+For this project I added a quick search button in every history record and for every hastag in the result so that the user can just click it and make a search with it as a primary hashtag, also the user has a spinner to indicate that the search is being loaded every time the search is in process of completition.
+
 ## Build & Run
 
 This is a web app that given a Instagram hashtag finds the 5 other hashtags that appear more often with the given hashtag in a photo, it uses: 
